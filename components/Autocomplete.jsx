@@ -44,7 +44,7 @@ const Autocomplete = ({ query, setQuery, setCompletion }) => {
           width: 100%;
           border-radius: 0.2rem;
           overflow: hidden;
-          margin-top: -0.5rem;
+          margin-top: 0.5rem;
           padding: 0;
           background: white;
           z-index: 50;

@@ -56,7 +56,7 @@ const ShowCard = ({ show }) => {
 
       <style jsx>{`
         .container {
-          margin: 0 3rem;
+          margin: 1rem 3rem;
         }
         .providers {
           display: flex;

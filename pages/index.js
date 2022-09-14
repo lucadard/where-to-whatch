@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 
 import Autocomplete from '../components/Autocomplete'
@@ -11,6 +11,16 @@ export default function Home({ countries }) {
   const [selectedCountry, setSelectedCountry] = useState('AR')
 
   const [show, setShow] = useState()
+
+  useEffect(() => {
+    if (!query.id || !show) return
+    setShow((prevState) => {
+      return {
+        ...prevState,
+        country: selectedCountry
+      }
+    })
+  }, [selectedCountry])
 
   const handleFormSubmit = (e) => {
     e.preventDefault()
@@ -35,7 +45,7 @@ export default function Home({ countries }) {
     <PageLayout
       title={!show ? 'Where to watch?' : `Where to watch ${show.title}?`}
     >
-      <form>
+      <form className="country">
         <select
           value={selectedCountry}
           onChange={(e) => setSelectedCountry(e.target.value)}
@@ -48,7 +58,7 @@ export default function Home({ countries }) {
         </select>
       </form>
       <div>
-        <form onSubmit={handleFormSubmit}>
+        <form className="query" onSubmit={handleFormSubmit}>
           <select
             name="select"
             value={query.type}
@@ -62,7 +72,9 @@ export default function Home({ countries }) {
           <div className="input-group">
             <input
               type="text"
-              placeholder="Search for a movie"
+              placeholder={`Search for a ${
+                query.type === 'movie' ? 'Movie' : 'TV Show'
+              }`}
               value={query.text}
               onKeyDown={handleInputCompletion}
               onChange={(e) =>
@@ -82,17 +94,39 @@ export default function Home({ countries }) {
         {show && <ShowCard show={show} />}
       </div>
       <style jsx>{`
-        form {
+        form.query {
           display: grid;
           grid-template-columns: 7rem auto 4rem;
           gap: 0 1rem;
+          gap: 1rem;
+        }
+        form.country {
+          width: 8rem;
+        }
+        form {
+          margin-bottom: 0;
           padding: 1rem;
+          padding-bottom: 0;
+        }
+        form > * {
+          margin-bottom: 0;
+        }
+        input,
+        select {
+          margin-bottom: 0;
         }
         .input-group {
           position: relative;
         }
         span: {
           color: white;
+        }
+        @media (max-width: 600px) {
+          form.query {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+          }
         }
       `}</style>
     </PageLayout>
