@@ -93,42 +93,6 @@ export default function Home({ countries }) {
         </form>
         {show && <ShowCard show={show} />}
       </div>
-      <style jsx>{`
-        form.query {
-          display: grid;
-          grid-template-columns: 7rem auto 4rem;
-          gap: 0 1rem;
-          gap: 1rem;
-        }
-        form.country {
-          width: 8rem;
-        }
-        form {
-          margin-bottom: 0;
-          padding: 1rem;
-          padding-bottom: 0;
-        }
-        form > * {
-          margin-bottom: 0;
-        }
-        input,
-        select {
-          margin-bottom: 0;
-        }
-        .input-group {
-          position: relative;
-        }
-        span: {
-          color: white;
-        }
-        @media (max-width: 600px) {
-          form.query {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-          }
-        }
-      `}</style>
     </PageLayout>
   )
 }

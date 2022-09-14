@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect } from 'react'
 
 import { useAutocompletion } from '../hooks/useAutocompletion'
 
@@ -38,38 +38,6 @@ const Autocomplete = ({ query, setQuery, setCompletion }) => {
           </p>
         </li>
       ))}
-      <style jsx>{`
-        .autocomplete {
-          position: absolute;
-          width: 100%;
-          border-radius: 0.2rem;
-          overflow: hidden;
-          margin-top: 0.5rem;
-          padding: 0;
-          background: white;
-          z-index: 50;
-        }
-        li {
-          list-style: none !important;
-          margin: 0;
-          background: rgba(0, 0, 0, 0.3);
-          transition: all 50ms ease-in-out;
-        }
-        p {
-          padding: 0.5rem 1rem;
-          margin-bottom: 0;
-          transition: all 50ms ease-in-out;
-          cursor: pointer;
-          border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-          color: rgba(0, 0, 0, 0.8);
-        }
-        li.selected {
-          background: rgba(0, 0, 0, 0.4);
-        }
-        li.selected > p {
-          color: rgba(255, 255, 255, 0.6);
-        }
-      `}</style>
     </ul>
   )
 }

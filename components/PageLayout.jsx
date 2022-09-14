@@ -9,11 +9,6 @@ const PageLayout = ({ children, title }) => {
         <link rel="icon" href="/favicon.png" />
       </Head>
       <main>{children}</main>
-      <style jsx>{`
-        main {
-          margin: 0 15%;
-        }
-      `}</style>
     </>
   )
 }

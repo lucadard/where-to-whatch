@@ -53,24 +53,6 @@ const ShowCard = ({ show }) => {
           </div>
         </>
       )}
-
-      <style jsx>{`
-        .container {
-          margin: 1rem 3rem;
-        }
-        .providers {
-          display: flex;
-          gap: 1rem;
-          flex-wrap: wrap;
-        }
-        .image-container {
-          width: 70px;
-          height: 70px;
-          border-radius: 0.3rem;
-          overflow: hidden;
-          position: relative;
-        }
-      `}</style>
     </div>
   )
 }
