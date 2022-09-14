@@ -18,8 +18,8 @@ const Autocomplete = ({ query, setQuery, setCompletion }) => {
   }
 
   useEffect(() => {
-    setCompletion(nextCompletion)
-  }, [setCompletion, nextCompletion])
+    setCompletion(autocompleteItems[selectedItem])
+  }, [setCompletion, autocompleteItems, selectedItem])
 
   return (
     <ul className="autocomplete">
@@ -47,6 +47,7 @@ const Autocomplete = ({ query, setQuery, setCompletion }) => {
           margin-top: -0.5rem;
           padding: 0;
           background: white;
+          z-index: 50;
         }
         li {
           list-style: none !important;
