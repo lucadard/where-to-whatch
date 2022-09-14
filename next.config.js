@@ -2,6 +2,12 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
+  env: {
+    API_KEY: process.env.API_KEY
+  },
+  images: {
+    domains: ['www.themoviedb.org']
+  }
 }
 
 module.exports = nextConfig
