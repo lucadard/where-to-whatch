@@ -35,7 +35,6 @@ export const useAutocompletion = (query) => {
   }, [query])
 
   return {
-    autocompleteItems,
-    nextCompletion: autocompleteItems[0] || undefined
+    autocompleteItems
   }
 }
