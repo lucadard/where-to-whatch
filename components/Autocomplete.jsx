@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react'
 
-import { useAutocompletion } from '../useAutocompletion'
+import { useAutocompletion } from '../hooks/useAutocompletion'
 
 const Autocomplete = ({ query, setQuery, setCompletion }) => {
   const { autocompleteItems, nextCompletion } = useAutocompletion(query)

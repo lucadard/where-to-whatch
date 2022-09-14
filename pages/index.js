@@ -1,5 +1,4 @@
 import React from 'react'
-import Head from 'next/head'
 import { useState } from 'react'
 import Autocomplete from '../components/Autocomplete'
 import ShowCard from '../components/ShowCard'
