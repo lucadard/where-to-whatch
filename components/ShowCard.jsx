@@ -17,8 +17,8 @@ const ShowCard = ({ show }) => {
         }
       })
 
-      const { AR } = data.results
-      return AR ? data.results.AR.flatrate : []
+      const countryProviders = data.results[show.country]
+      return countryProviders ? countryProviders.flatrate : []
     }
     fetchData().then((res) => {
       setProviders(res)
