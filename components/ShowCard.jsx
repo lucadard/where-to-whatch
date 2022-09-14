@@ -13,7 +13,7 @@ const ShowCard = ({ show }) => {
         method: 'get',
         url: `https://api.themoviedb.org/3/${show.type}/${show.id}/watch/providers`,
         params: {
-          api_key: 'a53c3f008cb3e74bef3bad7b2809a34f'
+          api_key: process.env.API_KEY
         }
       })
 

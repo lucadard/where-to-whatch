@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 
 const URL = 'https://api.themoviedb.org/3/search/'
-const API_KEY = process.env.API_KEY
 
 export const useAutocompletion = (query) => {
   const [autocompleteItems, setAutocompleteItems] = useState([])
@@ -14,7 +13,7 @@ export const useAutocompletion = (query) => {
         method: 'get',
         url: URL + query.type,
         params: {
-          api_key: API_KEY,
+          api_key: process.env.API_KEY,
           query: query.text
         }
       })
