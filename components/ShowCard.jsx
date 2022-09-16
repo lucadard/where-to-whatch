@@ -27,7 +27,7 @@ const ShowCard = ({ show }) => {
   }, [show])
 
   return (
-    <div className="container">
+    <div className="">
       {loading ? (
         <span>loading...</span>
       ) : (
@@ -37,8 +37,7 @@ const ShowCard = ({ show }) => {
             {providers && providers.length ? (
               providers.map((provider) => (
                 <div key={provider.provider_id}>
-                  {/* <p>{service.provider_name}</p> */}
-                  <div className="image-container">
+                  <div className="relative w-16 h-16 m-2">
                     <Image
                       src={`https://www.themoviedb.org/t/p/original${provider.logo_path}`}
                       alt={provider.provider_name + ' logo'}

@@ -8,7 +8,9 @@ const PageLayout = ({ children, title }) => {
         <title>{title}</title>
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <main>{children}</main>
+      <div className="h-screen bg-gray-900 text-white">
+        <main>{children}</main>
+      </div>
     </>
   )
 }
