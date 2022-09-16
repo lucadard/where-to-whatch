@@ -5,8 +5,10 @@ const URL = 'https://api.themoviedb.org/3/search/'
 
 export const useAutocompletion = (query) => {
   const [autocompleteItems, setAutocompleteItems] = useState([])
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    setLoading(true)
     if (query.text === '' || query.id) return setAutocompleteItems([])
     const fetchAutocomplete = async () => {
       const { data } = await axios({
@@ -28,12 +30,14 @@ export const useAutocompletion = (query) => {
     const timeOutId = setTimeout(() => {
       fetchAutocomplete(query.text).then((res) => {
         setAutocompleteItems(res)
+        setLoading(false)
       })
     }, 1000)
     return () => clearTimeout(timeOutId)
   }, [query])
 
   return {
-    autocompleteItems
+    autocompleteItems,
+    loading
   }
 }
