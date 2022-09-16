@@ -7,7 +7,7 @@ export const useComponentFocus = (ref) => {
     const handleClickOutside = (event) =>
       setFocus(() => {
         let condition = ref.current && !ref.current.contains(event.target)
-        console.log(condition ? 'click out!' : 'click in!')
+        // console.log(condition ? 'click out!' : 'click in!')
         return condition ? false : true
       })
 
