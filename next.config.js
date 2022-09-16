@@ -6,7 +6,7 @@ const nextConfig = {
     API_KEY: process.env.API_KEY
   },
   images: {
-    domains: ['www.themoviedb.org']
+    domains: ['www.themoviedb.org', 'countryflagsapi.com']
   }
 }
 
