@@ -33,7 +33,7 @@ const ShowCard = ({ show }) => {
       ) : (
         <>
           <h3>Where to stream:</h3>
-          <div className="providers">
+          <div className="flex">
             {providers && providers.length ? (
               providers.map((provider) => (
                 <div key={provider.provider_id}>
