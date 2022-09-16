@@ -10,14 +10,14 @@ import { useComponentFocus } from '../hooks/useComponentFocus'
 import { useCountry, CountryProvider } from '../context/CountryContext'
 
 export default function Home() {
+  const searchBarRef = useRef(null)
+
+  const { selectedCountry } = useCountry()
+  const { focus: searchFocus } = useComponentFocus(searchBarRef)
+
   const [query, setQuery] = useState({ type: 'tv', id: undefined, text: '' })
   const [completeQueryTo, setCompleteQueryTo] = useState()
   const [show, setShow] = useState()
-
-  const { selectedCountry } = useCountry()
-
-  const searchBarRef = useRef(null)
-  const { focus: searchFocus } = useComponentFocus(searchBarRef)
 
   useEffect(() => {
     if (!query.id || !show) return
@@ -55,7 +55,7 @@ export default function Home() {
       <div className="flex flex-col items-center gap-6">
         <CountrySelect />
         <form
-          className="z-10 relative"
+          className="z-10 relative w-full max-w-[600px] px-4"
           onSubmit={handleFormSubmit}
           ref={searchBarRef}
         >
