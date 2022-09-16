@@ -4,7 +4,7 @@ import axios from 'axios'
 const URL = 'https://api.themoviedb.org/3/search/'
 
 export const useAutocompletion = (query) => {
-  const [autocompleteItems, setAutocompleteItems] = useState([])
+  const [autocompleteItems, setAutocompleteItems] = useState(new Array(5))
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
