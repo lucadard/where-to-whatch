@@ -109,7 +109,7 @@ export default function Home({ countries }) {
           </div>
         </form>
         <div
-          class="grid grid-cols-2 items-center w-[200px] relative bg-gray-600 m-auto rounded-3xl py-3 cursor-pointer overflow-hidden select-none"
+          className="grid grid-cols-2 items-center w-[200px] relative bg-gray-600 m-auto rounded-3xl py-3 cursor-pointer overflow-hidden select-none"
           onClick={() =>
             setQuery((prev) =>
               prev.type === 'tv'
@@ -121,7 +121,7 @@ export default function Home({ countries }) {
           <p className="text-center z-10">Movies</p>
           <p className="text-center z-10">TV</p>
           <span
-            class={`absolute bg-gray-800 w-1/2 h-full rounded-3xl transition-all duration-300 ease-in-out ${
+            className={`absolute bg-gray-800 w-1/2 h-full rounded-3xl transition-all duration-300 ease-in-out ${
               query.type === 'movie' ? '' : 'translate-x-[100px]'
             }`}
           ></span>
