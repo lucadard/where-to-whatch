@@ -9,12 +9,12 @@ const countries = ['AR', 'US', 'ES', 'BR', 'UY', 'CL', 'JP']
 const CountrySelect = () => {
   const containerRef = useRef(undefined)
   const { focus: listFocus } = useComponentFocus(containerRef)
-  const [showList, setShowList] = useState(true)
+  const [showList, setShowList] = useState(false)
   const { selectedCountry, setSelectedCountry } = useCountry()
 
   useEffect(() => {
-    if (!listFocus) setShowList(false)
-  }, [listFocus])
+    if (!listFocus && showList) setShowList(false)
+  }, [listFocus, showList])
 
   return (
     <div ref={containerRef} className="z-20 self-end m-2">
@@ -42,17 +42,22 @@ const CountrySelect = () => {
       {countries.map((code, index) => (
         <div
           key={code}
-          onClick={() => setSelectedCountry(code)}
-          className={`absolute top-0 bg-white flex w-24 h-[56px] pl-2 gap-2 border-b-2 cursor-pointer items-center justify-items-center transition-all duration-500 ease-in-out`}
+          onClick={() => {
+            setSelectedCountry(code)
+            setShowList(false)
+          }}
+          className={`absolute top-0 bg-white flex w-24 h-[56px] pl-2 gap-2 border-b-2 cursor-pointer items-center justify-items-center transition-all ease-in-out`}
           style={
             showList
               ? {
                   transform: `translateY(${56 * (index + 1)}px)`,
                   transitionDelay: `${index}00ms`,
+                  transitionDuration: '500ms',
                   zIndex: `-${index}`
                 }
               : {
                   transitionDelay: `${countries.length - index}00ms`,
+                  transitionDuration: '200ms',
                   zIndex: `-${index}`
                 }
           }
