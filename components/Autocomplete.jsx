@@ -28,7 +28,7 @@ const Autocomplete = ({ query, setQuery, setCompletion, show }) => {
 
   return (
     <ul
-      className={`pt-[1px] pb-2 bg-white border-gray-300 border-t-0 border-[1px] shadow-md mt-11 rounded-b-3xl overflow-hidden absolute left-0 right-0 ${
+      className={`pt-[1px] mx-4 pb-2 bg-white border-gray-300 border-t-0 border-[1px] shadow-md mt-11 rounded-b-3xl overflow-hidden absolute left-0 right-0 ${
         show && !query.id && query.text ? '' : 'hidden'
       }`}
       onMouseLeave={() => setSelectedItem()}
