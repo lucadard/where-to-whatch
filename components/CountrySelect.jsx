@@ -17,7 +17,7 @@ const CountrySelect = () => {
   }, [listFocus, showList])
 
   return (
-    <div ref={containerRef} className="z-20 self-end m-2">
+    <div ref={containerRef} className="z-20 self-end mt-2">
       <div
         key={selectedCountry}
         className="z-10 relative bg-white flex w-24 h-[56px] pl-2 gap-2 border-b-2 cursor-pointer items-center justify-items-center"
