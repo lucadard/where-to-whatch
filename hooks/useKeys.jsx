@@ -1,15 +1,18 @@
 import { useState, useEffect } from 'react'
 
 export const useKeys = () => {
-  const [keys, setKeys] = useState({ up: false, down: false })
+  const [key, setKey] = useState(undefined)
 
   useEffect(() => {
     document.onkeydown = (e) => {
-      if (e.key === 'ArrowUp') setKeys({ up: true, down: false })
-      else if (e.key === 'ArrowDown') setKeys({ up: false, down: true })
-      else setKeys({ up: false, down: false })
+      if (e.key === 'ArrowUp') setKey('up')
+      else if (e.key === 'ArrowDown') setKey('down')
+      else if (e.key === 'ArrowLeft') setKey('left')
+      else if (e.key === 'ArrowRight') setKey('right')
+      else if (e.key === 'Enter') setKey('enter')
+      else if (e.key === 'Tab') setKey('tab')
     }
   }, [])
 
-  return { keys }
+  return { key, setKey }
 }
