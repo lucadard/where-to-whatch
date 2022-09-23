@@ -16,6 +16,7 @@ export const useComponentFocus = (ref) => {
   }, [ref])
 
   return {
-    focus
+    focus,
+    forceFocus: (value) => setFocus(value)
   }
 }
