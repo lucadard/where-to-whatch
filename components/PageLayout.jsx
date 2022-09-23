@@ -1,5 +1,5 @@
-import Head from 'next/head'
 import React from 'react'
+import Head from 'next/head'
 
 const PageLayout = ({ children, title }) => {
   return (
@@ -8,9 +8,7 @@ const PageLayout = ({ children, title }) => {
         <title>{title}</title>
         <link rel="icon" href="/favicon.png" />
       </Head>
-      <div className="h-screen">
-        <main>{children}</main>
-      </div>
+      <main className="h-screen">{children}</main>
     </>
   )
 }
