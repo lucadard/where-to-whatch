@@ -3,6 +3,7 @@ import Image from 'next/image'
 import axios from 'axios'
 
 import { useShow } from '../context/ShowContext'
+import { useTheme } from '../context/ThemeContext'
 
 const ShowCard = () => {
   const [showInfo, setShowInfo] = useState({ data: undefined, loading: true })
@@ -10,7 +11,8 @@ const ShowCard = () => {
   const [animation, setAnimation] = useState('close')
 
   const { show } = useShow()
-  
+  const { theme } = useTheme()
+
   const fetchShowInfo = async () => {
     const { data } = await axios({
       method: 'get',
@@ -49,8 +51,11 @@ const ShowCard = () => {
 
   return (
     <div
-      className={`relative w-screen max-w-[600px] h-auto sm:h-[450px] p-4 sm:p-0 sm:mx-auto flex sm:grid grid-cols-2 sm:rounded-xl overflow-hidden sm:shadow-lg bg-blue-100 
-    ${animation === 'open' ? '' : 'scale-y-0'} transition-transform duration-700`}
+      className={`relative w-screen max-w-[600px] h-auto sm:h-[450px] p-4 sm:p-0 flex sm:grid grid-cols-2 sm:rounded-xl overflow-hidden sm:shadow-lg 
+      ${theme === 'light' ? 'bg-blue-100' : 'bg-orange-900'}
+    ${
+      animation === 'open' ? '' : 'scale-y-0'
+    } transition-transform duration-700`}
     >
       <div className="relative w-1/2 sm:w-full h-full self-center">
         {!showInfo.loading && (

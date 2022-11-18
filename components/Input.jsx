@@ -5,6 +5,7 @@ import Autocomplete from '../components/Autocomplete'
 
 import { useShow } from '../context/ShowContext'
 import { useComponentFocus } from '../hooks/useComponentFocus'
+import { useTheme } from '../context/ThemeContext'
 
 const Input = () => {
   const searchBarRef = useRef(null)
@@ -12,6 +13,7 @@ const Input = () => {
   const [input, setInput] = useState('')
 
   const { show, unsetShow } = useShow()
+  const { theme } = useTheme()
 
   const handleChangeInput = (e) => {
     setInput(e.target.value)
@@ -24,12 +26,12 @@ const Input = () => {
   }
 
   return (
-    <div className="z-10 max-w-[600px] w-full flex flex-col gap-4 cursor-default">
+    <div className="z-10 max-w-[600px] w-full flex flex-col gap-4 cursor-default px-3">
       <div
         style={{ gridTemplateColumns: '3rem auto 3rem' }}
-        className={`z-10 relative grid h-12 rounded-3xl border-[1px] border-gray-300 hover:shadow-md ${
-          searchFocus ? 'shadow-md' : ''
-        }
+        className={`z-10 relative grid h-12 rounded-3xl border-[1px] hover:shadow-md 
+        ${theme === 'light' ? 'bg-light border-dark' : 'bg-dark border-light'}
+        ${searchFocus ? 'shadow-md' : ''}
         ${searchFocus && input && !show.id ? 'rounded-b-none' : ''}
         `}
         ref={searchBarRef}
@@ -50,20 +52,18 @@ const Input = () => {
             }
             `}
         >
-          <span className="opacity-70">Type a tv show or movie name</span>
+          <span className="font-extralight">Type a tv show or movie name</span>
           <span
-            className={`-z-10 absolute left-0 right-0 mx-auto bg-white text-transparent ${
-              searchFocus || input
-                ? 'w-full transition-all duration-300 delay-100'
-                : 'w-0'
-            }`}
+            className={`-z-10 absolute left-0 right-0 mx-auto text-transparent transition-transform duration-300 delay-100 
+            ${theme === 'light' ? 'bg-light' : 'bg-dark'}
+            ${searchFocus || input ? 'w-full ' : 'w-0'}`}
           >
             .
           </span>
         </span>
         <button
           onClick={handleEmptyInput}
-          className="h-full bg-transparent text-gray-400 grid place-content-center select-none cursor-default"
+          className="h-full bg-transparent grid place-content-center select-none cursor-default"
         >
           <span
             className={`scale-150 -mt-[5px] ${input ? 'cursor-pointer' : ''}`}
