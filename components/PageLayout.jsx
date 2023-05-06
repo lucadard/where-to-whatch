@@ -8,13 +8,20 @@ const PageLayout = ({ children }) => {
   const { theme } = useTheme()
   return (
     <>
+      <style>
+        {
+          `body {
+            background-color: ${theme === 'light' ? 'rgb(248 250 252)' : 'rgb(25 39 52)'};
+            color: ${theme === 'light' ? 'rgb(25 39 52)' : 'rgb(248 250 252)'}
+        }`
+}
+      </style>
       <Head>
         <title>{title}</title>
         <link rel='icon' href='/favicon.png' />
       </Head>
       <main
-        className={`h-screen
-        ${theme === 'light' ? 'bg-light text-dark' : 'bg-dark text-light'}`}
+        className='min-h-screen pb-10'
       >
         {children}
       </main>
