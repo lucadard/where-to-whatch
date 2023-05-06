@@ -14,7 +14,7 @@ export default function App () {
 
   return (
     <PageLayout title='Where to watch?'>
-      <div className='relative flex flex-col items-center pt-10 md:pb-10 gap-6 transition-colors duration-300'>
+      <div className='w-full max-w-2xl mx-auto items-center gap-6 transition-colors duration-300'>
         <Title />
         <Input loading={loading} />
         {show.id !== 'search' && <ShowCard setLoading={setLoading} />}

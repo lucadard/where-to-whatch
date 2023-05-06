@@ -3,7 +3,7 @@ import React from 'react'
 
 function Title () {
   return (
-    <div className='w-full max-w-[600px] px-3'>
+    <div className='mx-auto w-full max-w-[600px] px-3'>
       <h1 className='text-4xl font-bold'>
         <a href='/'>Where to watch?</a>
       </h1>

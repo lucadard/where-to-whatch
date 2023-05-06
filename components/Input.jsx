@@ -27,7 +27,7 @@ const Input = ({ loading }) => {
   }
 
   return (
-    <div className='z-10 max-w-[600px] w-full flex flex-col gap-4 cursor-default px-3'>
+    <div className='mx-auto pt-5 pb-10 z-10 max-w-[600px] w-full flex flex-col gap-4 cursor-default px-3'>
       <div
         style={{ gridTemplateColumns: '3rem auto 3rem' }}
         className={`z-10 relative grid h-12 rounded-3xl border-[1px] hover:shadow-md 

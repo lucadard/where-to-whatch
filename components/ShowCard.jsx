@@ -50,7 +50,7 @@ const ShowCard = ({ setLoading }) => {
   }, [show])
 
   return (
-    <div className={`flex w-full max-w-2xl mx-auto gap-5 sm:gap-10 bg-black/10 sm:p-5 p-2 sm:rounded-3xl
+    <div className={`flex gap-5 sm:gap-10 bg-black/10 sm:p-5 p-2 sm:rounded-3xl
     ${
       animation === 'open' ? '' : 'scale-y-0'
     } transition-transform duration-700
