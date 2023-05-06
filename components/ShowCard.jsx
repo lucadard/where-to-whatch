@@ -44,8 +44,10 @@ const ShowCard = ({ setLoading }) => {
       fetchStreamingInfo().then((res) => {
         setProviders({ data: res, loading: false })
         setAnimation('open')
-        setLoading(false)
       }).catch(console.error)
+        .finally(
+          setLoading(false)
+        )
     }, 800)
   }, [show])
 
