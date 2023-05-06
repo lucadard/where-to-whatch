@@ -1,3 +1,17 @@
 {
-  "extends": "next/core-web-vitals"
+  "overrides": [
+    {
+      "files": [
+        "*.js",
+        "*.jsx"
+      ]
+    }
+  ],
+  "extends": [
+    "next/core-web-vitals",
+    "./node_modules/standard/eslintrc.json"
+  ],
+  "rules": {
+    "no-unused-vars": "warn"
+  }
 }
