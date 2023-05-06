@@ -3,15 +3,13 @@ import Image from 'next/image'
 import axios from 'axios'
 
 import { useShow } from '../context/ShowContext'
-import { useTheme } from '../context/ThemeContext'
 
-const ShowCard = () => {
+const ShowCard = ({ setLoading }) => {
   const [showInfo, setShowInfo] = useState({ data: undefined, loading: true })
   const [providers, setProviders] = useState({ data: [], loading: true })
   const [animation, setAnimation] = useState('close')
 
   const { show } = useShow()
-  const { theme } = useTheme()
 
   const fetchShowInfo = async () => {
     const { data } = await axios({
@@ -37,6 +35,7 @@ const ShowCard = () => {
 
   useEffect(() => {
     if (!show.id) return
+    setLoading(true)
     setAnimation('close')
     setTimeout(() => {
       setShowInfo((prev) => ({ ...prev, loading: true }))
@@ -45,35 +44,32 @@ const ShowCard = () => {
       fetchStreamingInfo().then((res) => {
         setProviders({ data: res, loading: false })
         setAnimation('open')
-      })
+        setLoading(false)
+      }).catch(console.error)
     }, 800)
   }, [show])
 
   return (
-    <div
-      className={`relative w-screen max-w-[600px] h-auto sm:h-[450px] p-4 sm:p-0 flex sm:grid grid-cols-2 sm:rounded-xl overflow-hidden sm:shadow-lg 
-      ${theme === 'light' ? 'bg-blue-100' : 'bg-orange-900'}
+    <div className={`flex w-full max-w-2xl mx-auto gap-5 sm:gap-10 bg-black/10 sm:p-5 p-2 sm:rounded-3xl
     ${
       animation === 'open' ? '' : 'scale-y-0'
-    } transition-transform duration-700`}
+    } transition-transform duration-700
+    `}
     >
-      <div className='relative w-1/2 sm:w-full h-full self-center'>
-        {!showInfo.loading && (
+      <div className='relative w-full aspect-[8/12] flex-[3] rounded-xl overflow-hidden'>
+        {showInfo.data &&
           <Image
             src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2/${showInfo.data.poster_path}`}
             alt={showInfo.data.name + ' poster'}
-            width='300'
-            height='450'
-            // layout="fill"
-            objectFit='contain'
-            className='rounded-xl sm:rounded-none'
-          />
-        )}
+            objectFit='cover'
+            objectPosition='bottom'
+            layout='fill'
+          />}
       </div>
-      <div className='p-4'>
-        <h3 className='mb-2'>Watch now on:</h3>
+      <div className='flex-[3]'>
+        <h3 className='mb-2 font-semibold sm:text-2xl'>Watch now on:</h3>
         {!providers.loading && (
-          <div className='flex gap-2 flex-wrap items-center'>
+          <div className='flex gap-2 flex-wrap items-center pb-5'>
             {providers.data && providers.data.length
               ? (
                   providers.data.map((provider) => (
