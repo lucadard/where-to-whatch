@@ -10,7 +10,7 @@ const PageLayout = ({ children }) => {
     <>
       <Head>
         <title>{title}</title>
-        <link rel="icon" href="/favicon.png" />
+        <link rel='icon' href='/favicon.png' />
       </Head>
       <main
         className={`h-screen

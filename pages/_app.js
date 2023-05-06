@@ -5,7 +5,7 @@ import { CountryProvider } from '../context/CountryContext'
 import { ShowProvider } from '../context/ShowContext'
 import '../styles/globals.css'
 
-function MyApp({ Component, pageProps, theme }) {
+function MyApp ({ Component, pageProps, theme }) {
   return (
     <ThemeProvider loadedTheme={theme}>
       <CountryProvider>

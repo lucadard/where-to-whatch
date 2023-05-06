@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import { useTheme } from '../context/ThemeContext'
 
@@ -10,7 +10,7 @@ const ThemeSelector = () => {
       ${theme === 'light' ? 'bg-dark outline-dark' : 'bg-light outline-light'}`}
       onClick={toggleTheme}
     >
-      <div className="w-1/2 h-full">
+      <div className='w-1/2 h-full'>
         <div
           className={`transition-transform w-full h-full scale-[0.7] duration-300 rounded-full
         ${theme === 'light' ? 'bg-light' : 'translate-x-full bg-dark'}`}

@@ -57,37 +57,39 @@ const ShowCard = () => {
       animation === 'open' ? '' : 'scale-y-0'
     } transition-transform duration-700`}
     >
-      <div className="relative w-1/2 sm:w-full h-full self-center">
+      <div className='relative w-1/2 sm:w-full h-full self-center'>
         {!showInfo.loading && (
           <Image
             src={`https://www.themoviedb.org/t/p/w300_and_h450_bestv2/${showInfo.data.poster_path}`}
             alt={showInfo.data.name + ' poster'}
-            width="300"
-            height="450"
+            width='300'
+            height='450'
             // layout="fill"
-            objectFit="contain"
-            className="rounded-xl sm:rounded-none"
+            objectFit='contain'
+            className='rounded-xl sm:rounded-none'
           />
         )}
       </div>
-      <div className="p-4">
-        <h3 className="mb-2">Watch now on:</h3>
+      <div className='p-4'>
+        <h3 className='mb-2'>Watch now on:</h3>
         {!providers.loading && (
-          <div className="flex gap-2 flex-wrap items-center">
-            {providers.data && providers.data.length ? (
-              providers.data.map((provider) => (
-                <Image
-                  src={`https://www.themoviedb.org/t/p/original${provider.logo_path}`}
-                  alt={provider.provider_name + ' logo'}
-                  width="50"
-                  height="50"
-                  key={provider.provider_id}
-                  className="rounded-sm"
-                />
-              ))
-            ) : (
-              <span>No data available.</span>
-            )}
+          <div className='flex gap-2 flex-wrap items-center'>
+            {providers.data && providers.data.length
+              ? (
+                  providers.data.map((provider) => (
+                    <Image
+                      src={`https://www.themoviedb.org/t/p/original${provider.logo_path}`}
+                      alt={provider.provider_name + ' logo'}
+                      width='50'
+                      height='50'
+                      key={provider.provider_id}
+                      className='rounded-sm'
+                    />
+                  ))
+                )
+              : (
+                <span>No data available.</span>
+                )}
           </div>
         )}
       </div>

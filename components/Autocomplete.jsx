@@ -29,53 +29,59 @@ const Autocomplete = ({ input, focus }) => {
       ${theme === 'light' ? 'bg-light ring-dark' : 'bg-dark ring-light'} 
       ${!focus || !input.get || isShowSet ? 'hidden' : ''}`}
     >
-      <div className=" w-full h-2 -mt-1">
+      <div className=' w-full h-2 -mt-1'>
         <div
           className={`h-[1px] w-11/12 mx-auto 
           ${theme === 'light' ? 'bg-light' : 'bg-dark'}`}
         />
       </div>
-      {autocompleteItems.length ? (
-        autocompleteItems.map((item, index) => (
-          <li
-            key={index}
-            className={`py-3 px-6 cursor-default h-12 flex items-center hover:bg-opacity-10 
+      {autocompleteItems.length
+        ? (
+            autocompleteItems.map((item, index) => (
+              <li
+                key={index}
+                className={`py-3 px-6 cursor-default h-12 flex items-center hover:bg-opacity-10 
             ${theme === 'light' ? 'hover:bg-dark' : 'hover:bg-light'}`}
-            onClick={() => !loading && handleSelectShow(item)}
-          >
-            {loading ? (
-              <span
-                className={`h-4 w-full opacity-80 rounded animate-pulse 
+                onClick={() => !loading && handleSelectShow(item)}
+              >
+                {loading
+                  ? (
+                    <span
+                      className={`h-4 w-full opacity-80 rounded animate-pulse 
                 ${theme === 'light' ? 'bg-light' : 'bg-dark'}`}
+                    />
+                    )
+                  : (
+                    <div className='w-full'>
+                      <p className='whitespace-nowrap text-ellipsis overflow-hidden'>
+                        {item.title}
+                      </p>
+                      <p className='font-sans italic text-sm text-opacity-80 self-end'>
+                        {item.type === 'tv' ? 'tv show' : 'movie'} ({item.year})
+                      </p>
+                    </div>
+                    )}
+              </li>
+            ))
+          )
+        : loading
+          ? (
+            <div className='flex justify-center items-center'>
+              <Image
+                src='/assets/spinner.svg'
+                alt='loading spinner for autocompletion'
+                width={20}
+                height={20}
               />
-            ) : (
-              <div className="w-full">
-                <p className="whitespace-nowrap text-ellipsis overflow-hidden">
-                  {item.title}
-                </p>
-                <p className="font-sans italic text-sm text-opacity-80 self-end">
-                  {item.type === 'tv' ? 'tv show' : 'movie'} ({item.year})
-                </p>
-              </div>
+            </div>
+            )
+          : (
+            <div className='flex justify-center items-center'>
+              <span className='opacity-80'>
+                {'We didn\'t find any shows with that name.'}
+              </span>
+            </div>
             )}
-          </li>
-        ))
-      ) : loading ? (
-        <div className="flex justify-center items-center">
-          <Image
-            src="/assets/spinner.svg"
-            alt="loading spinner for autocompletion"
-            width={20}
-            height={20}
-          />
-        </div>
-      ) : (
-        <div className="flex justify-center items-center">
-          <span className="opacity-80">
-            {`We didn't find any shows with that name.`}
-          </span>
-        </div>
-      )}
     </ul>
   )
 }
