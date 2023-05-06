@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react'
+import Image from 'next/image'
 
 import CountrySelector from './CountrySelector'
 import Autocomplete from '../components/Autocomplete'
@@ -7,7 +8,7 @@ import { useShow } from '../context/ShowContext'
 import { useComponentFocus } from '../hooks/useComponentFocus'
 import { useTheme } from '../context/ThemeContext'
 
-const Input = () => {
+const Input = ({ loading }) => {
   const searchBarRef = useRef(null)
   const { focus: searchFocus } = useComponentFocus(searchBarRef)
   const [input, setInput] = useState('')
@@ -37,7 +38,14 @@ const Input = () => {
         ref={searchBarRef}
       >
         <button className='w-14 h-full bg-transparent grid place-content-center cursor-default'>
-          <span className='-rotate-45 scale-125 mt-[1px]'>⚲</span>
+          {loading
+            ? <Image
+                src='/assets/spinner.svg'
+                alt='loading spinner for autocompletion'
+                width={20}
+                height={20}
+              />
+            : <span className='-rotate-45 scale-125 mt-[1px]'>⚲</span>}
         </button>
         <input
           type='text'
