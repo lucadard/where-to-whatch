@@ -1,15 +1,13 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import { useAutocompletion } from '../hooks/useAutocompletion'
 import { useShow } from '../context/ShowContext'
-import { useKeys } from '../hooks/useKeys'
 import { useCountry } from '../context/CountryContext'
 import Image from 'next/image'
 import { useTheme } from '../context/ThemeContext'
 
 const Autocomplete = ({ input, focus }) => {
   const { autocompleteItems, loading } = useAutocompletion(input.get)
-  const [selectedItem, setSelectedItem] = useState(undefined)
   const { country } = useCountry()
   const { theme } = useTheme()
   const { setShow, isShowSet } = useShow()
@@ -48,7 +46,7 @@ const Autocomplete = ({ input, focus }) => {
                   ? (
                     <span
                       className={`h-4 w-full opacity-80 rounded animate-pulse 
-                ${theme === 'light' ? 'bg-light' : 'bg-dark'}`}
+                ${theme === 'light' ? 'bg-dark/20' : 'bg-light/10'}`}
                     />
                     )
                   : (
